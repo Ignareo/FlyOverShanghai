@@ -16,7 +16,7 @@ Three.js + React + Vite 的 3D 飞行演示：驾驶武直-10 飞越程序化生
 - `src/three/glb.ts` 外部 GLB 适配层：加载、归一化、旋翼识别、城市沙盘对齐
 - `src/three/textures.ts` Canvas 程序化贴图（窗灯、水面、文字、旋翼残影）
 - `src/three/showcase.ts` 装备展示页轻量渲染器：深色展台 + 网格地板 + 缓慢转盘（20s/圈，拖动时暂停，旋翼静止），自带 `setDayMode()` 昼夜切换，与飞行引擎完全独立
-- `src/App.tsx` 路由（`/` 飞行页、`/armory` 装备展示页）+ 飞行页 HUD 界面与操作说明
+- `src/App.tsx` 路由（`/` 飞行页、`/armory` 装备展示页，`HashRouter` 定义在 `src/main.tsx`）+ 飞行页 HUD 界面与操作说明
 - `src/pages/Armory.tsx` 装备展示页：3D 视口 + 信息面板 + 扫码支付弹窗（假二维码占位，无真实支付逻辑）
 - `src/pages/armory-content.toml` 展示页文案配置（名称 / 星级 / 价格 / 预留区 reserved / 详细介绍 details），保存即热更新
 - `public/models/README.md` 外部模型导入位的详细说明

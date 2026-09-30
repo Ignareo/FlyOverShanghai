@@ -14,7 +14,7 @@ npm run lint   # ESLint
 ## 页面
 
 - `/` 飞行页：驾驶武直-10 夜飞上海（可切白天），HUD 仪表盘、观赏模式。
-- `/armory` 装备展示页：展台转盘静态展示 + 信息面板 + 扫码支付弹窗（假二维码占位，无真实支付逻辑）。页面文案在 `src/pages/armory-content.toml` 中编辑，保存即热更新。
+- `/#/armory` 装备展示页（HashRouter）：展台转盘静态展示 + 信息面板 + 扫码支付弹窗（假二维码占位，无真实支付逻辑）。页面文案在 `src/pages/armory-content.toml` 中编辑，保存即热更新。
 
 两页可按 `B` 键快速互相切换。
 
@@ -49,7 +49,7 @@ npm run lint   # ESLint
 
 线上地址：https://ignareo.github.io/FlyOverShanghai/ （装备展示页：/armory）
 
-`vite.config.ts` 的 `base: './'` 是相对路径，适配 Pages 子路径部署；SPA 路由依赖 `dist/404.html`（构建后由 `index.html` 复制）兜底，直接刷新 /armory 也能正常加载。GLB 单文件均 < 100MB，GitHub 单文件限制内，无需 Git LFS（LFS 文件 Pages 只会拉到 pointer，反而有害，GLB 务必留在普通 git 里）。
+`vite.config.ts` 的 `base: './'` 是相对路径，适配 Pages 子路径部署；路由用 `HashRouter`（`src/main.tsx`），任何子路径 / 直接刷新都不会 404。GLB 单文件均 < 100MB，GitHub 单文件限制内，无需 Git LFS（LFS 文件 Pages 只会拉到 pointer，反而有害，GLB 务必留在普通 git 里）。
 
 **首次启用**：仓库 Settings → Pages → Source 选 `Deploy from a branch`，分支 `gh-pages`、目录 `/(root)`。
 
