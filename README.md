@@ -44,3 +44,20 @@ npm run lint   # ESLint
 - `pearl.glb` / `shanghai-tower.glb` / `swfc.glb` / `jinmao.glb` 单件地标替换
 
 详见 `public/models/README.md`。更多结构与维护备忘见 `AGENTS.md`。
+
+## 部署（GitHub Pages）
+
+线上地址：https://ignareo.github.io/FlyOverShanghai/ （装备展示页：/armory）
+
+`vite.config.ts` 的 `base: './'` 是相对路径，适配 Pages 子路径部署；SPA 路由依赖 `dist/404.html`（构建后由 `index.html` 复制）兜底，直接刷新 /armory 也能正常加载。GLB 单文件均 < 100MB，GitHub 单文件限制内，无需 Git LFS（LFS 文件 Pages 只会拉到 pointer，反而有害，GLB 务必留在普通 git 里）。
+
+**首次启用**：仓库 Settings → Pages → Source 选 `Deploy from a branch`，分支 `gh-pages`、目录 `/(root)`。
+
+**更新部署**（构建产物单独放在 `gh-pages` 分支）：
+
+```bash
+npm run build && cd dist && cp index.html 404.html && \
+git add -A && git commit -m "deploy: gh-pages build" && git push origin gh-pages
+```
+
+注意 `dist/` 是一个嵌套的独立 git 仓库（分支 `gh-pages`），已被根仓库 gitignore。
